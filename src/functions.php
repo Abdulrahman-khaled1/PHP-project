@@ -1,18 +1,6 @@
 <?php
-
-/**
- * This file contains utility functions.
- *
- * @package MyPHPProject
- */
-
-/**
- * Returns a greeting message.
- *
- * @return string The greeting message.
- */
-function sayHello() 
+function sayHello() : string 
 {
     return "Hello, World!";
 }
-?>
+
