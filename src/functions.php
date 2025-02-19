@@ -1,14 +1,16 @@
 <?php
+
 declare(strict_types=1);
 
 /**
  * This file contains utility functions for the project.
  *
- * @category Utilities
- * @package  MyPHPProject
- * @author   Your Name <your.email@example.com>
- * @license  MIT License
- * @link     https://github.com/your-username/php-ci-project
+ * @phpversion 8.4
+ * @category   Utilities
+ * @package    MyPHPProject
+ * @author     Your Name <your.email@example.com>
+ * @license    MIT License
+ * @link       https://github.com/your-username/php-ci-project
  */
 
 /**
@@ -20,4 +22,3 @@ function sayHello(): string
 {
     return "Hello, World!";
 }
-
