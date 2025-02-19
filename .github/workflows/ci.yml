@@ -10,32 +10,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up PHP
+      - name: Install PHP 8.4
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
-          tools: composer
+          tools: phpstan, phpcs
 
-      - name: Install Dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+      - name: Install dependencies
+        run: composer install --no-progress --no-suggest
 
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: Check Code Style
+        run: phpcs --standard=PSR12 src/
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.4'
+      - name: Perform static analysis
+        run: phpstan analyse src/ --level=5
 
-      - name: Install Dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
-
-      - name: Run Tests
+      - name: Run Unit Tests
         run: vendor/bin/phpunit tests/
